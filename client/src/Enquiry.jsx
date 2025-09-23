@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
-import { Label, Button, Checkbox, TextInput } from 'flowbite-react'
+import { Label, Button, TextInput } from 'flowbite-react'
 import Enquirylist from './Enquiry/Enquirylist';
 import axios from 'axios';
 import { useState } from 'react';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2'
 
 
 const Enquiry = () => {
@@ -29,7 +29,7 @@ const Enquiry = () => {
 
         if (formdata._id) {
             //update
-            axios.put(`http://localhost:8000/api/enquiry/update/${formdata._id}`, formdata).then((res) => {
+            axios.put(`${import.meta.env.VITE_SERVER_URL}/enquiry/update/${formdata._id}`, formdata).then(() => {
                 // console.log(res.data)
                 toast.success("Enquiry Updated   Successfully")
                 setFormdata({
@@ -41,7 +41,7 @@ const Enquiry = () => {
                 getAlldata()
             })
         } else {
-            axios.post('http://localhost:8000/api/enquiry/insert', formdata).then((res) => {
+            axios.post(`${import.meta.env.VITE_SERVER_URL}/enquiry/insert`, formdata).then(() => {
                 // console.log(res.data)
                 toast.success("Enquiry Saved Successfully")
                 setFormdata({
@@ -56,7 +56,7 @@ const Enquiry = () => {
     }
 
     let getAlldata = () => {
-        axios.get('http://localhost:8000/api/enquiry/getdata').then((res) => {
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/enquiry/getdata`).then((res) => {
             return res.data
         })
             .then((finaldata) => {

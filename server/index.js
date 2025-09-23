@@ -12,7 +12,7 @@ app.use('/api/enquiry',Enquiryroute)
 
 mongoose.connect(process.env.DBURL).then(()=>{
     console.log("Connected Success");
-    app.listen(process.env.PORT || 3000,()=>{
+    app.listen(process.env.PORT,()=>{
         console.log(`server listening in ${process.env.PORT}`)
     })
 }).catch((err)=>{
