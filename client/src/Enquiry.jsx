@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 
 
 const Enquiry = () => {
+    const userId = "userid" 
 
     let [enquiryList, setEnquiryList] = useState([])
 
