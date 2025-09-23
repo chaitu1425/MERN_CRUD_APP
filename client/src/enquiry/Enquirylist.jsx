@@ -1,20 +1,19 @@
 import React from 'react'
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
-import { toast,ToastContainer } from 'react-toastify';
-import axios, { Axios } from 'axios';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 
 function Enquirylist({data,getAlldata,Swal,setFormdata}) {
     let deleteData=(id)=>{
-
         Swal.fire({
             title:"Do you want to Delete?",
             showDenyButton:true,
-            showCancleButton:true,
+            showCancelButton:true,
             confirmButtonText:"Delete"
         }).then((result)=>{
             if(result.isConfirmed){
-                axios.delete(`http://localhost:8000/api/enquiry/delete/${id}`).then((res)=>{
+                axios.delete(`${import.meta.env.VITE_SERVER_URL}/enquiry/delete/${id}`).then(()=>{
                     toast.success("Data Deleted")
                     getAlldata()
                 })
@@ -24,7 +23,7 @@ function Enquirylist({data,getAlldata,Swal,setFormdata}) {
         })
     }
     let editrow=(id)=>{
-        axios.get(`http://localhost:8000/api/enquiry/single/${id}`).then((res)=>{
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/enquiry/single/${id}`).then((res)=>{
             let data=res.data;
             setFormdata(data.enquiry)
         })

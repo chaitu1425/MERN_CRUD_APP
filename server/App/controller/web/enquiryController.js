@@ -21,9 +21,13 @@ let enquiryList = async(req,res)=>{
 }
 
 let enquiryDelete = async(req,res)=>{
-    let enid=req.params.id;
-    let enquiry=await enquiryModel.deleteOne({_id:enid})
-    res.send({status:1,message:"Deleted successfully",enquiry})
+    try{
+        let enid=req.params.id
+        let enquiry=await enquiryModel.deleteOne({_id:enid})
+        res.status(200).json({message:"Deleted successfully"})
+    }catch(error){
+        return res.status(500).json({message:`Enquiry delete error: ${error}`})
+    }
 }
 
 let enquirySingle = async(req,res)=>{
