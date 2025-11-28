@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 
 const Enquiry = () => {
     // const userId = "userid" 
+    const chey = "chaitu"
 
     let [enquiryList, setEnquiryList] = useState([])
 
@@ -30,7 +31,7 @@ const Enquiry = () => {
 
         if (formdata._id) {
             //update
-            axios.put(`${import.meta.env.VITE_SERVER_URL}/enquiry/update/${formdata._id}`, formdata).then(() => {
+            axios.put(`${import.meta.env.VITE_SERVER_URL}/api/enquiry/update/${formdata._id}`, formdata).then(() => {
                 // console.log(res.data)
                 toast.success("Enquiry Updated   Successfully")
                 setFormdata({
@@ -42,7 +43,7 @@ const Enquiry = () => {
                 getAlldata()
             })
         } else {
-            axios.post(`${import.meta.env.VITE_SERVER_URL}/enquiry/insert`, formdata).then(() => {
+            axios.post(`${import.meta.env.VITE_SERVER_URL}/api/enquiry/insert`, formdata).then(() => {
                 // console.log(res.data)
                 toast.success("Enquiry Saved Successfully")
                 setFormdata({
@@ -57,7 +58,7 @@ const Enquiry = () => {
     }
 
     let getAlldata = () => {
-        axios.get(`${import.meta.env.VITE_SERVER_URL}/enquiry/getdata`).then((res) => {
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/api/enquiry/getdata`).then((res) => {
             return res.data
         })
             .then((finaldata) => {
