@@ -32,7 +32,7 @@ function Enquirylist({data,getAlldata,Swal,setFormdata}) {
     <div>
         <div>
             <div className="overflow-x-auto bg-gray-200 p-4 rounded-md ml-3">
-                <h2 className='text-[20px] font-bold'>Enquiry List(DATA)</h2>
+                <h2 className='text-[20px] font-bold'>Enquiry List</h2>
                 <Table>
                     <TableHead>
                         <TableRow>
